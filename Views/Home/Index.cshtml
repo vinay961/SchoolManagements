@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+    <!-- Welcome Section -->
+    <div class="jumbotron text-center bg-light py-5">
+        <h1 class="display-4 text-primary">Welcome to Rose Land Public School</h1>
+        <p class="lead text-dark">Providing quality education with excellence and values.</p>
+        <a asp-action="Registration" asp-controller="Home" class="btn btn-primary btn-lg">Register Now</a>
+    </div>
+
+    <!-- About Section -->
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <img src="https://go.boarddocs.com/ca/roselandsd/Board.nsf/files/PRINT_LOGO/$file/Roseland%20Public%20Schools.png" class="img-fluid rounded" alt="School Image">
+        </div>
+        <div class="col-md-6">
+            <h2>About Our School</h2>
+            <p class="text-muted">
+                Rose Land Public School is dedicated to nurturing young minds through innovative teaching methods.
+                Our institution fosters a culture of excellence, discipline, and creativity to help students reach their full potential.
+            </p>
+            <ul class="list-group">
+                <li class="list-group-item">🏫 World-Class Infrastructure</li>
+                <li class="list-group-item">📚 Well-Equipped Library</li>
+                <li class="list-group-item">🎭 Extracurricular Activities</li>
+                <li class="list-group-item">⚽ Sports & Physical Education</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="text-center mt-5">
+        <h2 class="text-primary">Why Choose Us?</h2>
+        <p class="text-muted">We provide a learning environment that fosters academic excellence and overall growth.</p>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Experienced Faculty</h5>
+                        <p class="card-text">Our teachers are highly skilled and dedicated to student success.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Modern Classrooms</h5>
+                        <p class="card-text">Smart classrooms with digital learning tools for an interactive experience.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Holistic Development</h5>
+                        <p class="card-text">Focus on academics, sports, and extracurricular activities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center mt-5">
+        <a href="@Url.Action("Index", "Registration")" class="btn btn-success btn-lg">Join Us Today!</a>
+    </div>
+</div>

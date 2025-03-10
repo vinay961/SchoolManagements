@@ -1,0 +1,31 @@
+﻿@model SchoolManagement.Models.Students
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h2>Student Details</h2>
+
+<div class="card shadow p-4">
+    <div class="row">
+        <div class="col-md-4">
+            @if (!string.IsNullOrEmpty(Model.ProfileImage))
+            {
+                <img src="~/images/@Model.ProfileImage" alt="Student Image" class="img-thumbnail" width="200" />
+            }
+            else
+            {
+                <p>No Profile Image</p>
+            }
+        </div>
+        <div class="col-md-8">
+            <h4>@Model.Name</h4>
+            <p><strong>Father's Name:</strong> @Model.FatherName</p>
+            <p><strong>Email:</strong> @Model.Email</p>
+            <p><strong>Class:</strong> @Model.Standard</p>
+
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+            <a asp-action="List" asp-controller="HandleStudent" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

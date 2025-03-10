@@ -1,0 +1,57 @@
+﻿@model SchoolManagement.Models.StudentViewModel
+
+@{
+    ViewData["Title"] = "Student Registration";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Student Registration</h2>
+    @Html.ValidationSummary()
+
+    <form asp-action="Registration" method="post" enctype="multipart/form-data" class="p-4 shadow-lg rounded bg-light">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Student Name</label>
+            <input asp-for="Name" class="form-control" placeholder="Enter your name" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="FatherName" class="form-label">Father's Name</label>
+            <input asp-for="FatherName" class="form-control" placeholder="Enter father's name" required />
+            <span asp-validation-for="FatherName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" type="email" class="form-control" placeholder="Enter email" required />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Standard" class="form-label">Select Class</label>
+            <select asp-for="Standard" class="form-select" required>
+                <option value="">-- Select Class --</option>
+                @for (int i = 1; i <= 12; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <span asp-validation-for="Standard" class="text-danger"></span>
+        </div>
+
+        <!-- Profile Image Upload Field -->
+        <div class="mb-3">
+            <label asp-for="ImageFile" class="form-label">Upload Profile Image</label>
+            <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" required />
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Register</button>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
