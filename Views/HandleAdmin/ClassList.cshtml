@@ -1,0 +1,32 @@
+﻿@model List<SchoolManagement.Models.Class>
+
+@{
+    ViewData["Title"] = "Class Details";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-dark text-white text-center">
+            <h2>Class Details</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                @foreach (var classItem in Model)
+                {
+                    <div class="col-md-6 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Class: @classItem.classNumber</h5>
+                                <p class="card-text"><strong>Teacher:</strong> @classItem.ClassTeacherName</p>
+                                <p class="card-text"><strong>Total Students:</strong> @(classItem.Students?.Count ?? 0)</p>
+                                <a asp-action="ViewClassStudents" asp-controller="HandleAdmin" asp-route-id="@classItem.Id"
+                                   class="btn btn-primary">View Student List</a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,7 +5,9 @@
 }
 
 <div class="container mt-4">
-    <h2 class="text-center">Student Registration</h2>
+    <div class="card-header bg-primary text-white text-center">
+        <h2>Student Registration</h2>
+    </div>
     @Html.ValidationSummary()
 
     <form asp-action="Registration" method="post" enctype="multipart/form-data" class="p-4 shadow-lg rounded bg-light">

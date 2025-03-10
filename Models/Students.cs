@@ -23,5 +23,9 @@ namespace SchoolManagement.Models
 
         public string? ProfileImage { get; set; } // Store the file path
 
+        // Now we have to connect the Student model with the Class model
+        [ForeignKey("Class")]
+        public int ClassId { get; set; } // ClassId is same as the Id in the Class model. This is the foreign key.
+        public Class? Class { get; set; } // Navigation property, means we can access the Class model from the Student model.
     }
 }

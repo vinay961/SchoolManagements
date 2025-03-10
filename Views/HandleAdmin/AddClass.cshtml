@@ -1,0 +1,39 @@
+﻿@model SchoolManagement.Models.Class
+
+@{
+    ViewData["Title"] = "Add New Class";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white text-center">
+            <h2>Add New Class</h2>
+        </div>
+        <div class="card-body">
+            <form asp-action="AddClass" method="post">
+                <div class="mb-3">
+                    <label asp-for="classNumber" class="form-label">Class Number</label>
+                    <input asp-for="classNumber" class="form-control" placeholder="Enter class number" required>
+                    <span asp-validation-for="classNumber" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ClassTeacherName" class="form-label">Class Teacher Name</label>
+                    <input asp-for="ClassTeacherName" class="form-control" placeholder="Enter teacher's name" required>
+                    <span asp-validation-for="ClassTeacherName" class="text-danger"></span>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success px-4">Save Class</button>
+                    <a asp-action="Index" class="btn btn-secondary px-4">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

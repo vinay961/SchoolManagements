@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SchoolManagement.Models.Students>
+
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Student List</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning text-center">
+            No students found in this class.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>Profile Image</th>
+                    <th>Name</th>
+                    <th>Father's Name</th>
+                    <th>Email</th>
+                    <th>Class</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (!string.IsNullOrEmpty(student.ProfileImage))
+                            {
+                                <img src="~/images/@student.ProfileImage" alt="Profile Image" class="rounded-circle" width="50" height="50" />
+                            }
+                            else
+                            {
+                                <img src="https://png.pngtree.com/png-vector/20230903/ourmid/pngtree-3d-illustration-avatar-profile-man-png-image_9945214.png"
+                                     alt="Profile Image" class="rounded-circle" width="50" height="50" />
+                            }
+                        </td>
+                        <td>@student.Name</td>
+                        <td>@student.FatherName</td>
+                        <td>@student.Email</td>
+                        <td>@student.Standard</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="HandleStudent" asp-route-id="@student.Id" class="btn btn-warning btn-sm">Edit</a>
+                            <a asp-action="Details" asp-controller="HandleStudent" asp-route-id="@student.Id" class="btn btn-info btn-sm">View</a>
+                            <form asp-action="Delete" asp-controller="HandleStudent" asp-route-id="@student.Id" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <a asp-action="Registration" asp-controller="Home" class="btn btn-primary">Add New Student</a>
+    <a asp-action="ClassList" asp-controller="HandleAdmin" class="btn btn-secondary">Back to Class List</a>
+</div>

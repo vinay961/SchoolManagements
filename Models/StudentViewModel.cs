@@ -16,7 +16,7 @@ namespace SchoolManagement.Models
         [Required]
         [Range(1, 12, ErrorMessage = "Class must be between 1 and 12")]
         public int Standard { get; set; }
-
+        public int ClassId { get; set; }
         public IFormFile? ImageFile { get; set; }
 
     }

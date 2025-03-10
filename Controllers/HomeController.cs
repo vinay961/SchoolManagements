@@ -33,6 +33,12 @@ public class HomeController : Controller
         {
             return RedirectToAction("FailedPage");
         }
+        var classEntity = dbContext.Class.FirstOrDefault(c => c.classNumber == s.Standard);
+        if (classEntity == null)
+        {
+            ViewBag.Message = "Class not found";
+            return RedirectToAction("FailedPage");
+        }
         string fileName = "";
         if(s.ImageFile != null)
         {
@@ -47,6 +53,7 @@ public class HomeController : Controller
                 FatherName = s.FatherName,
                 Email = s.Email,
                 Standard = s.Standard,
+                ClassId = classEntity.Id,
                 ProfileImage = fileName
             };
             dbContext.Students.Add(student);

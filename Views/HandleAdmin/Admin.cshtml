@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-dark text-white text-center">
+            <h2>Admin Dashboard</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Add Section -->
+                <div class="col-md-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Add Records</h5>
+                            <p class="card-text">Add new Students and Classes.</p>
+                            <a asp-action="Registration" asp-controller="Home" class="btn btn-success">Add Student</a>
+                            <a asp-action="AddClass" asp-controller="HandleAdmin" class="btn btn-success">Add Class</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View Section -->
+                <div class="col-md-6 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">View Records</h5>
+                            <p class="card-text">View all Students and Classes.</p>
+                            <a asp-action="List" asp-controller="HandleStudent" class="btn btn-primary">View Students</a>
+                            <a asp-action="ClassList" asp-controller="HandleAdmin" class="btn btn-primary">View Classes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logout -->
+                <div class="col-md-12 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Logout</h5>
+                            <p class="card-text">End your session securely.</p>
+                            <a asp-action="Logout" asp-controller="HandleAdmin" class="btn btn-secondary">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

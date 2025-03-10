@@ -1,0 +1,54 @@
+﻿@model SchoolManagement.Models.AdminViewModel
+
+@{
+    ViewData["Title"] = "Admin Login";
+}
+
+<div class="d-flex justify-content-center rounded mt-5">
+    <div class="card shadow-lg p-4 rounded-4" style="width: 380px; background: #fff;">
+        <h3 class="text-center mb-3 text-primary fw-bold">Admin Login</h3>
+        <form asp-action="Login" asp-controller="HandleAdmin" method="post">
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label fw-semibold">Email</label>
+                <input asp-for="Email" class="form-control rounded-pill" required>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3 position-relative">
+                <label asp-for="Password" class="form-label fw-semibold">Password</label>
+                <div class="input-group">
+                    <input asp-for="Password" type="password" class="form-control rounded-pill" required>
+                    <span class="input-group-text bg-white border-0" style="cursor: pointer;" onclick="togglePassword()">
+                        <i class="bi bi-eye-slash" id="eyeIcon"></i>
+                    </span>
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 rounded-pill shadow-sm">Login</button>
+        </form>
+        <div class="text-center mt-3">
+            <small class="text-muted">Forgot Password? <a href="#" class="text-decoration-none">Reset here</a></small>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript for Password Toggle -->
+<script>
+    function togglePassword() {
+        var passwordInput = document.getElementById("Password");
+        var eyeIcon = document.getElementById("eyeIcon");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.remove("bi-eye-slash");
+            eyeIcon.classList.add("bi-eye");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("bi-eye");
+            eyeIcon.classList.add("bi-eye-slash");
+        }
+    }
+</script>
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
