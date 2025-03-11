@@ -33,10 +33,10 @@
             <label asp-for="Standard" class="form-label">Select Class</label>
             <select asp-for="Standard" class="form-select" required>
                 <option value="">-- Select Class --</option>
-                @for (int i = 1; i <= 12; i++)
+                @foreach (var classNumber in ViewBag.classes)
                 {
-                    <option value="@i">@i</option>
-                }
+                    <option value="@classNumber">@classNumber</option>
+                })
             </select>
             <span asp-validation-for="Standard" class="text-danger"></span>
         </div>

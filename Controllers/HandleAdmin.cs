@@ -103,7 +103,7 @@ namespace SchoolManagement.Controllers
             {
                 return RedirectToAction("FailedPage");
             }
-            var classInDb = dbContext.Class.FirstOrDefault(c => c.Id == c.Id);
+            var classInDb = dbContext.Class.FirstOrDefault(cl => cl.Id == c.Id);
             if (classInDb == null)
             {
                 ViewBag.Message = "Class not found";

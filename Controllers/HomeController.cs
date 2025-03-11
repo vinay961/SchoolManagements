@@ -24,6 +24,8 @@ public class HomeController : Controller
     }
     public IActionResult Registration()
     {
+        var classList = dbContext.Class.Select(c => c.classNumber).Distinct().OrderBy(c => c).ToList();
+        ViewBag.classes = classList;
         return View();
     }
     [HttpPost]

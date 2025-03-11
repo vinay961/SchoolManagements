@@ -32,16 +32,43 @@ namespace SchoolManagement.Controllers
             return View(student);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(Students student)
+        public async Task<IActionResult> Edit(StudentViewModel student)
         {
             if (ModelState.IsValid)
             {
-                dbContext.Students.Update(student);
+                // Fetch the existing student from the database
+                var existingStudent = await dbContext.Students.FirstOrDefaultAsync(s => s.Email == student.Email);
+
+                if (existingStudent == null)
+                {
+                    ViewBag.Message = "Student not found";
+                    return RedirectToAction("FailedPage");
+                }
+
+                // Fetch the corresponding class
+                var classEntity = await dbContext.Class.FirstOrDefaultAsync(c => c.classNumber == student.Standard);
+                if (classEntity == null)
+                {
+                    ViewBag.Message = "Class not found";
+                    return RedirectToAction("FailedPage");
+                }
+
+                // Update the existing student details
+                existingStudent.Name = student.Name;
+                existingStudent.FatherName = student.FatherName;
+                existingStudent.Email = student.Email;
+                existingStudent.Standard = student.Standard;
+                existingStudent.ClassId = classEntity.Id;
+
+                // Update and save changes
+                dbContext.Students.Update(existingStudent);
                 await dbContext.SaveChangesAsync();
+
                 return RedirectToAction("List");
             }
             return View(student);
         }
+
 
         public IActionResult Details(int Id)
         {
