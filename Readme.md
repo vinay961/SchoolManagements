@@ -5,7 +5,7 @@
 - **How to make connections between database tables in ASP.NET MVC**
 
 1. **How to handle images in ASP.NET MVC**
-To handle images we first create a variable env for the hosting environment. Then we create a folder named "images" in the wwwroot folder. We save the images in this folder. We use the following code to save the image in the folder.
+-To handle images we first create a variable env for the hosting environment. Then we create a folder named "images" in the wwwroot folder. We save the images in this folder. We use the following code to save the image in the folder.
 ```csharp
     string fileName = "";
     if(s.ImageFile != null)
@@ -31,7 +31,7 @@ To handle images we first create a variable env for the hosting environment. The
 ```
 
 2. **How to manage sessions in ASP.NET MVC**
-To manage or use session we first need to update the program file.
+-To manage or use session we first need to update the program file.
 ```csharp
     builder.Services.AddSession(options =>
     {
@@ -46,7 +46,7 @@ Then we can use the session in the controller. We use the following code to set 
 ```
 
 3. **How to make connections between tables in ASP.NET MVC**
-We need to declare the foreign key in the model class. We use the following code to declare the foreign key.
+-We need to declare the foreign key in the model class. We use the following code to declare the foreign key.
 ```csharp
     public class Students
     {
