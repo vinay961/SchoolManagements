@@ -86,5 +86,33 @@ namespace SchoolManagement.Controllers
             // now return the students of this class
             return View(c.Students);
         }
+        public IActionResult EditClass(int Id)
+        {
+            var c = dbContext.Class.FirstOrDefault(c => c.Id == Id);
+            if (c == null)
+            {
+                ViewBag.Message = "Class not found";
+                return RedirectToAction("ClassList");
+            }
+            return View(c);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditClass(Class c)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("FailedPage");
+            }
+            var classInDb = dbContext.Class.FirstOrDefault(c => c.Id == c.Id);
+            if (classInDb == null)
+            {
+                ViewBag.Message = "Class not found";
+                return RedirectToAction("ClassList");
+            }
+            classInDb.classNumber = c.classNumber;
+            classInDb.ClassTeacherName = c.ClassTeacherName;
+            await dbContext.SaveChangesAsync();
+            return RedirectToAction("ClassList");
+        }
     }
 }

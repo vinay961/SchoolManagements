@@ -1,7 +1,11 @@
-﻿@model List<SchoolManagement.Models.Class>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@model List<SchoolManagement.Models.Class>
 
 @{
     ViewData["Title"] = "Class Details";
+    var userRole = HttpContextAccessor.HttpContext.Session.GetString("Admin");
 }
 
 <div class="container mt-5">
@@ -19,9 +23,15 @@
                                 <h5 class="card-title">Class: @classItem.classNumber</h5>
                                 <p class="card-text"><strong>Teacher:</strong> @classItem.ClassTeacherName</p>
                                 <p class="card-text"><strong>Total Students:</strong> @(classItem.Students?.Count ?? 0)</p>
+
                                 <a asp-action="ViewClassStudents" asp-controller="HandleAdmin" asp-route-id="@classItem.Id"
                                    class="btn btn-primary">View Student List</a>
 
+                                @if (userRole is not null)
+                                {
+                                    <a asp-action="EditClass" asp-controller="HandleAdmin" asp-route-id="@classItem.Id"
+                                       class="btn btn-warning">Edit</a>
+                                }
                             </div>
                         </div>
                     </div>

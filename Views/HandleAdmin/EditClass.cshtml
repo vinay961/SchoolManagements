@@ -1,0 +1,31 @@
+﻿@model SchoolManagement.Models.Class
+
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-dark text-white text-center">
+            <h2>Edit Class Details</h2>
+        </div>
+        <div class="card-body">
+            <form asp-action="EditClass" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Class Number</label>
+                    <input type="number" asp-for="classNumber" class="form-control" required />
+                    <span asp-validation-for="classNumber" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Class Teacher Name</label>
+                    <input type="text" asp-for="ClassTeacherName" class="form-control" required />
+                    <span asp-validation-for="ClassTeacherName" class="text-danger"></span>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success px-4 me-2">Update</button>
+                    <a asp-action="ClassList" class="btn btn-secondary px-4">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

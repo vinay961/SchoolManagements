@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
 
 // Creating connection string and connection with db
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

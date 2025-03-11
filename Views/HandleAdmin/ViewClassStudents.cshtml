@@ -6,6 +6,7 @@
 
 <div class="container mt-4">
     <h2 class="text-center">Student List</h2>
+    <input type="text" id="search" class="form-control" placeholder="Search by Name" />
 
     @if (!Model.Any())
     {
@@ -61,3 +62,22 @@
     <a asp-action="Registration" asp-controller="Home" class="btn btn-primary">Add New Student</a>
     <a asp-action="ClassList" asp-controller="HandleAdmin" class="btn btn-secondary">Back to Class List</a>
 </div>
+
+<script>
+    document.getElementById('search').addEventListener('input', function() {
+        let searchText = this.value.toLowerCase();
+        let rows = document.querySelectorAll("tbody tr");
+
+        rows.forEach(row => {
+            let name = row.children[1].textContent.toLowerCase();
+            let fatherName = row.children[2].textContent.toLowerCase();
+            let email = row.children[3].textContent.toLowerCase();
+
+            if(name.includes(searchText) || fatherName.includes(searchText) || email.includes(searchText)) {
+                row.style.display = "";
+            }else{
+                row.style.display = "none";
+            }
+        })
+    })
+</script>

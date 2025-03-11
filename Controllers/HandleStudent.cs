@@ -22,6 +22,12 @@ namespace SchoolManagement.Controllers
 
         public IActionResult Edit(int Id)
         {
+            // here we have to check for admin authentication
+            var admin = HttpContext.Session.GetString("Admin");
+            if (admin == null)
+            {
+                return RedirectToAction("Login", "HandleAdmin");
+            }
             var student = dbContext.Students.Find(Id);
             return View(student);
         }
@@ -44,6 +50,11 @@ namespace SchoolManagement.Controllers
         }
         public async Task<IActionResult> Delete(int Id)
         {
+            var admin = HttpContext.Session.GetString("Admin");
+            if (admin == null)
+            {
+                return RedirectToAction("Login", "HandleAdmin");
+            }
             var student = await dbContext.Students.FindAsync(Id);
             dbContext.Students.Remove(student);
             await dbContext.SaveChangesAsync();
